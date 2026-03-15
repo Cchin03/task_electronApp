@@ -1,4 +1,4 @@
-appId: com.electron.app
+appId:  com.weichienCHIN.task-electronapp
 productName: task-electronapp
 directories:
   buildResources: build
@@ -41,5 +41,6 @@ appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
 publish:
-  provider: generic
-  url: https://example.com/auto-updates
+  provider: github
+  owner: Cchin03
+  repo: task_electronApp
