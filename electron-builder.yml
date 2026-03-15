@@ -14,6 +14,11 @@ asarUnpack:
 win:
   executableName: task-electronapp
   icon: build/weather.ico
+  target:
+    - target: nsis
+      arch: x64
+    - target: dir
+      arch: x64
 
 nsis:
   artifactName: ${name}-${version}-setup.${ext}

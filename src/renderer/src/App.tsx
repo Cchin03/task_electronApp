@@ -78,6 +78,9 @@ function App() {
       {error && <p className="error">{error}</p>}
       {weather && <WeatherCard data={weather} />}
       {forecast && <ForecastCard data={forecast.list} />}
+      <footer className="app-footer">
+        <p>🌤️ Weather Dashboard v1.1.0 — Now with auto-update support!</p>
+      </footer>
     </div>
   )
 }
