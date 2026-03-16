@@ -36,21 +36,24 @@ function App() {
   const [forecast, setForecast] = useState<ForecastData | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
-  const handleCitySelect = (selectedCity: string) => {
-  setCity(selectedCity)
-  handleSearch()
-}
+  const handleCitySelect = async (selectedCity: string) => {
+    setCity(selectedCity)
+    await fetchWeather(selectedCity)
+  }
 
   const handleSearch = async () => {
     if (!city.trim()) return
+    await fetchWeather(city)
+  }
 
+  const fetchWeather = async (cityName: string) => {
     setLoading(true)
     setError(null)
 
     try {
       const [weatherRes, forecastRes] = await Promise.all([
-        axios.get(`${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`),
-        axios.get(`${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`)
+        axios.get(`${BASE_URL}/weather?q=${cityName}&appid=${API_KEY}&units=metric`),
+        axios.get(`${BASE_URL}/forecast?q=${cityName}&appid=${API_KEY}&units=metric`)
       ])
 
       setWeather(weatherRes.data)
@@ -63,7 +66,6 @@ function App() {
       setLoading(false)
     }
   }
-
 
   return (
     <div className="app">
