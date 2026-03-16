@@ -38,7 +38,6 @@ function createWindow(): BrowserWindow {
 
 // Auto updater setup
 function setupAutoUpdater(mainWindow: BrowserWindow): void {
-  // Disable auto download - we want to prompt the user first
   autoUpdater.autoDownload = false
 
   // Check for updates after app starts
